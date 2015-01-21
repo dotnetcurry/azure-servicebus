@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustomerMaster">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderMasters" Relationship="Self.FK__OrderMast__Custo__31EC6D26" FromRole="CustomerMaster" ToRole="OrderMaster" />
+  </EntityType>
+  <EntityType Name="ItemMaster">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitPrice" Type="Int32" Nullable="false" />
+    <Property Name="AvailableQuantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderMasters" Relationship="Self.FK__OrderMast__ItemI__30F848ED" FromRole="ItemMaster" ToRole="OrderMaster" />
+  </EntityType>
+  <EntityType Name="OrderMaster">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustomerMaster" Relationship="Self.FK__OrderMast__Custo__31EC6D26" FromRole="OrderMaster" ToRole="CustomerMaster" />
+    <NavigationProperty Name="ItemMaster" Relationship="Self.FK__OrderMast__ItemI__30F848ED" FromRole="OrderMaster" ToRole="ItemMaster" />
+  </EntityType>
+  <Association Name="FK__OrderMast__Custo__31EC6D26">
+    <End Role="CustomerMaster" Type="Self.CustomerMaster" Multiplicity="1" />
+    <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerMaster">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="OrderMaster">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderMast__ItemI__30F848ED">
+    <End Role="ItemMaster" Type="Self.ItemMaster" Multiplicity="1" />
+    <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemMaster">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="OrderMaster">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CompanyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerMasters" EntityType="Self.CustomerMaster" />
+    <EntitySet Name="ItemMasters" EntityType="Self.ItemMaster" />
+    <EntitySet Name="OrderMasters" EntityType="Self.OrderMaster" />
+    <AssociationSet Name="FK__OrderMast__Custo__31EC6D26" Association="Self.FK__OrderMast__Custo__31EC6D26">
+      <End Role="CustomerMaster" EntitySet="CustomerMasters" />
+      <End Role="OrderMaster" EntitySet="OrderMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderMast__ItemI__30F848ED" Association="Self.FK__OrderMast__ItemI__30F848ED">
+      <End Role="ItemMaster" EntitySet="ItemMasters" />
+      <End Role="OrderMaster" EntitySet="OrderMasters" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

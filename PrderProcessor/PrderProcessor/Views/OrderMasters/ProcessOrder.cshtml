@@ -1,0 +1,66 @@
+﻿@model OrderProcessor.Models.ProcessOrderInfo
+
+@{
+    ViewBag.Title = "ProcessOrder";
+}
+
+<h2>ProcessOrder</h2>
+@using (Html.BeginForm())
+{
+
+    <table>
+        <tr>
+            <td>
+                Order Id:
+            </td>
+            <td>
+                @Html.EditorFor(m => m.OrderId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer Id:
+            </td>
+            <td>
+                @Html.EditorFor(m => m.CustomerName)
+                @Html.Hidden("CustomerId", Model.CustomerId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Item Id:
+            </td>
+            <td>
+                @Html.EditorFor(m => m.ItemName)
+                @Html.Hidden("ItemId", Model.ItemId)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Ordered Quantity:
+            </td>
+            <td>
+                @Html.EditorFor(m => m.Quantity)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Available Quantity:
+            </td>
+            <td>
+                @Html.EditorFor(m => m.AvailableQuantity)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Order Status:
+            </td>
+            <td>
+                @Html.DropDownList("OrderStatus")
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Save Process Order" />
+}

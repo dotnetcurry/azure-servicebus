@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e5e9829ccbd04ab493645560ce5579f9" Name="Diagram1">
+        <EntityTypeShape EntityType="CompanyModel.CustomerMaster" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.ItemMaster" Width="1.5" PointX="6.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.OrderMaster" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyModel.ProcessOrder" Width="1.5" PointX="9.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="CompanyModel.FK__OrderMast__Custo__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK__ProcessOr__Custo__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK__OrderMast__ItemI__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK__ProcessOr__ItemI__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyModel.FK__ProcessOr__Order__34C8D9D1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

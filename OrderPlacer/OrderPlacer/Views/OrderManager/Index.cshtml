@@ -1,0 +1,39 @@
+﻿@model OrderPlacer.Models.CustomerOrderItemMaster
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Place Order</h2>
+
+
+@using(Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>
+            Customer Name:
+        </td>
+        <td>
+            @Html.DropDownList("CustomerId")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Item Name:
+        </td>
+        <td>
+            @Html.DropDownList("ItemId")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Quantity:
+        </td>
+        <td>
+            @Html.EditorFor(m => m.Order.Quantity)
+        </td>
+    </tr>
+</table>
+    <input type="submit" value="Submit"/>
+}

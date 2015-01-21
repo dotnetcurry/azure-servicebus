@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OrderProcessor.Models.ProcessOrder>
+
+@{
+    ViewBag.Title = "PrecessedOrders";
+}
+
+<h2>PrecessedOrders</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderProcessId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerMaster.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemMaster.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderMaster.OrderId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderProcessId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerMaster.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemMaster.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderMaster.OrderId)
+        </td>
+        
+    </tr>
+}
+
+</table>

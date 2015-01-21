@@ -1,0 +1,36 @@
+Customers places orders
+
+CustomerMaster
+
+CustomerId
+Customer Name
+Address
+City
+Email
+ContactNo
+
+
+ItemMaster
+
+ItemId
+ItemName
+UnitPrice
+AvailableQuantity
+
+OrderMaster
+
+OrderId
+ItemId
+Quantity
+TotalPrice
+OrderDate
+CustomerId
+
+
+ProcessOrder
+
+OrderProcessId
+OrderId
+CustomerId
+ItemId
+OrderStatus
